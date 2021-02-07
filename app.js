@@ -1,36 +1,43 @@
 // search all meal function
 const getTheMealList = () => {
     let searchInput = document.getElementById('search-input').value;
-    // console.log(searchInput);
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`)
-        .then(res => res.json())
-        .then(data => {
-            // console.log(data);
-            let allMeal = "";
-            if (data.meals) {
-                data.meals.forEach(meal => {
-                    allMeal += `                    
-                        <div onclick="mealIngredientsAll('${meal.strMeal}')" class="col-md-3 cursor-view">
-                            <div class="meal-container text-center my-3 p-4 bg-dark text-white data-id="${meal.IdMeal}">
-                                <img src="${meal.strMealThumb}" alt="" class="img-fluid rounded">
-                                <p class="mt-3">${meal.strMeal}</p>
-                            </div>
-                        </div>                    
-                    `;
-                });
-            } else {
-                allMeal = `
-                    <div class="row text-center">
-                        <div class="col-md-12 text-warning">
-                            <h2>Sorry! we could not find any meal.Please Search Again.</h2>
+    if (searchInput == "") {
+        document.getElementById('meal-item').innerHTML = `
+        <h2>Sorry Yaar! Put Something.</h2>
+        `;
+    }
+    else {
+        // console.log(searchInput);
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                let allMeal = "";
+                if (data.meals) {
+                    data.meals.forEach(meal => {
+                        allMeal += `                    
+                    <div onclick="mealIngredientsAll('${meal.strMeal}')" class="col-md-3 cursor-view">
+                        <div class="meal-container text-center my-3 p-4 bg-dark text-white data-id="${meal.IdMeal}">
+                            <img src="${meal.strMealThumb}" alt="" class="img-fluid rounded">
+                            <p class="mt-3">${meal.strMeal}</p>
                         </div>
-                    </div> 
+                    </div>                    
                 `;
-            }
-            const mealList = document.getElementById('meal-item');
-            mealList.innerHTML = allMeal;
-        });
-    hidingOnClick();
+                    });
+                } else {
+                    allMeal = `
+                <div class="row text-center">
+                    <div class="col-md-12 text-warning">
+                        <h2>Sorry! we could not find any meal.Please Search Again.</h2>
+                    </div>
+                </div> 
+            `;
+                }
+                const mealList = document.getElementById('meal-item');
+                mealList.innerHTML = allMeal;
+            });
+        hidingOnClick();
+    }
 }
 
 //display meal details function
