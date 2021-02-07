@@ -13,7 +13,7 @@ const getTheMealList = () => {
             if (data.meals) {
                 data.meals.forEach(meal => {
                     allMeal = `                    
-                        <div class="col-md-3">
+                        <div class="col-md-3 cursor-view">
                             <div class="meal-container text-center my-3 p-4 bg-dark text-white data-id="${meal.IdMeal}">
                                 <img src="${meal.strMealThumb}" alt="" class="img-fluid rounded">
                                 <p class="mt-3">${meal.strMeal}</p>
@@ -32,13 +32,15 @@ const getTheMealList = () => {
             }
             const mealList = document.getElementById('meal-item');
             mealList.innerHTML = allMeal;
-        })
+        });
 }
 
-//ingredients event handler
-
-
+const mealList = document.getElementById('meal-item');
+mealList.addEventListener('click', function () {
+    
+})
 // ingredients details show function
-const mealIngredients = () => {
+// const mealIngredients = (meal) => {
 
-}
+
+// }
