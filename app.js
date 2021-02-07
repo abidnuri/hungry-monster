@@ -18,8 +18,7 @@ const getTheMealList = () => {
                         </div>                    
                     `;
                 });
-            }
-            else {
+            } else {
                 allMeal = `
                     <div class="row text-center">
                         <div class="col-md-12 text-warning">
@@ -48,7 +47,7 @@ const mealIngredientsAll = (mealName) => {
 }
 const addMealAll = meal => {
     const mealDetails = `
-    <div id="mealDetailsId" class="col-md-6 offset-md-3">
+        <div id="mealDetailsId" class="col-md-6 offset-md-3">
             <div class="meal-details my-3 p-4 bg-dark text-white data-id="${meal.IdMeal}"">
                 <img src="${meal.strMealThumb}" alt="" class="img-fluid rounded">
                 <h2 class="mt-3">${meal.strMeal}</h2>
@@ -61,6 +60,8 @@ const addMealAll = meal => {
                         <li class="measure">${meal.strIngredient4} ${meal.strMeasure4}</li>
                         <li class="measure">${meal.strIngredient5} ${meal.strMeasure5}</li>
                         <li class="measure">${meal.strIngredient6} ${meal.strMeasure6}</li>
+                        <li class="measure">${meal.strIngredient7} ${meal.strMeasure7}</li>
+                        <li class="measure">${meal.strIngredient8} ${meal.strMeasure8}</li>
                     </ul>
                 </div>
             </div>
@@ -69,6 +70,7 @@ const addMealAll = meal => {
     document.getElementById('meal-ingredients').innerHTML = mealDetails;
 }
 
+// mealDetails hide on search click function
 const hidingOnClick = () => {
     const searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', function () {
