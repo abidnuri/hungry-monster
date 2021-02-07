@@ -1,3 +1,4 @@
+// search all meal function
 const getTheMealList = () => {
     let searchInput = document.getElementById('search-input').value;
     // console.log(searchInput);
@@ -17,7 +18,8 @@ const getTheMealList = () => {
                         </div>                    
                     `;
                 });
-            } else {
+            }
+            else {
                 allMeal = `
                     <div class="row text-center">
                         <div class="col-md-12 text-warning">
@@ -29,8 +31,10 @@ const getTheMealList = () => {
             const mealList = document.getElementById('meal-item');
             mealList.innerHTML = allMeal;
         });
+    hidingOnClick();
 }
 
+//display meal details function
 const mealIngredientsAll = (mealName) => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`
     fetch(url)
@@ -44,7 +48,7 @@ const mealIngredientsAll = (mealName) => {
 }
 const addMealAll = meal => {
     const mealDetails = `
-    <div class="col-md-6 offset-md-3">
+    <div id="mealDetailsId" class="col-md-6 offset-md-3">
             <div class="meal-details my-3 p-4 bg-dark text-white data-id="${meal.IdMeal}"">
                 <img src="${meal.strMealThumb}" alt="" class="img-fluid rounded">
                 <h2 class="mt-3">${meal.strMeal}</h2>
@@ -63,4 +67,12 @@ const addMealAll = meal => {
         </div>
     `;
     document.getElementById('meal-ingredients').innerHTML = mealDetails;
+}
+
+const hidingOnClick = () => {
+    const searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', function () {
+        const mealDetails = document.getElementById('mealDetailsId');
+        mealDetails.style = 'display:none';
+    })
 }
