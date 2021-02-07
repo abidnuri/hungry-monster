@@ -44,7 +44,7 @@ const mealIngredientsAll = (mealName) => {
 }
 const addMealAll = meal => {
     const mealDetails = `
-    <div class="col-md-3">
+    <div class="col-md-6 offset-md-3">
             <div class="meal-details my-3 p-4 bg-dark text-white data-id="${meal.IdMeal}"">
                 <img src="${meal.strMealThumb}" alt="" class="img-fluid rounded">
                 <h2 class="mt-3">${meal.strMeal}</h2>
