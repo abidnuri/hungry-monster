@@ -1,7 +1,3 @@
-document.getElementById('search-button').addEventListener('click', function () {
-    getTheMealList();
-})
-
 const getTheMealList = () => {
     let searchInput = document.getElementById('search-input').value;
     // console.log(searchInput);
@@ -55,12 +51,12 @@ const addMealAll = meal => {
                 <div class="ingredients">
                     <p>Ingredients: </p>
                     <ul id="ingredients-list">
-                        <li id="measure">${meal.strIngredient1} ${meal.strMeasure1}</li>
-                        <li id="measure">${meal.strIngredient2} ${meal.strMeasure1}</li>
-                        <li id="measure">${meal.strIngredient3} ${meal.strMeasure1}</li>
-                        <li id="measure">${meal.strIngredient4} ${meal.strMeasure1}</li>
-                        <li id="measure">${meal.strIngredient5} ${meal.strMeasure1}</li>
-                        <li id="measure">${meal.strIngredient6} ${meal.strMeasure1}</li>
+                        <li class="measure">${meal.strIngredient1} ${meal.strMeasure1}</li>
+                        <li class="measure">${meal.strIngredient2} ${meal.strMeasure2}</li>
+                        <li class="measure">${meal.strIngredient3} ${meal.strMeasure3}</li>
+                        <li class="measure">${meal.strIngredient4} ${meal.strMeasure4}</li>
+                        <li class="measure">${meal.strIngredient5} ${meal.strMeasure5}</li>
+                        <li class="measure">${meal.strIngredient6} ${meal.strMeasure6}</li>
                     </ul>
                 </div>
             </div>
