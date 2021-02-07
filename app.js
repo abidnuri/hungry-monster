@@ -34,3 +34,11 @@ const getTheMealList = () => {
             mealList.innerHTML = allMeal;
         })
 }
+
+//ingredients event handler
+
+
+// ingredients details show function
+const mealIngredients = () => {
+
+}
