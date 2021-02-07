@@ -21,6 +21,14 @@ const getTheMealList = () => {
                         </div>                    
                     `;
                 });
+            } else {
+                allMeal = `
+                    <div class="row text-center">
+                        <div class="col-md-12 text-warning">
+                            <h2>Sorry! we could not find any meal.Please Search Again.</h2>
+                        </div>
+                    </div> 
+                `;
             }
             const mealList = document.getElementById('meal-item');
             mealList.innerHTML = allMeal;
