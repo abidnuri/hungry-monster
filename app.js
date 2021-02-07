@@ -12,8 +12,8 @@ const getTheMealList = () => {
             let allMeal = "";
             if (data.meals) {
                 data.meals.forEach(meal => {
-                    allMeal = `                    
-                        <div class="col-md-3 cursor-view">
+                    allMeal += `                    
+                        <div onclick="mealIngredientsAll('${meal.strMeal}')" class="col-md-3 cursor-view">
                             <div class="meal-container text-center my-3 p-4 bg-dark text-white data-id="${meal.IdMeal}">
                                 <img src="${meal.strMealThumb}" alt="" class="img-fluid rounded">
                                 <p class="mt-3">${meal.strMeal}</p>
@@ -35,12 +35,36 @@ const getTheMealList = () => {
         });
 }
 
-const mealList = document.getElementById('meal-item');
-mealList.addEventListener('click', function () {
-    
-})
-// ingredients details show function
-// const mealIngredients = (meal) => {
-
-
-// }
+const mealIngredientsAll = (mealName) => {
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const meal = data.meals[0];
+            addMealAll(meal);
+            // console.log(data.meals[0])
+        })
+    // console.log(url);
+}
+const addMealAll = meal => {
+    const mealDetails = `
+    <div class="col-md-3">
+            <div class="meal-details my-3 p-4 bg-dark text-white data-id="${meal.IdMeal}"">
+                <img src="${meal.strMealThumb}" alt="" class="img-fluid rounded">
+                <h2 class="mt-3">${meal.strMeal}</h2>
+                <div class="ingredients">
+                    <p>Ingredients: </p>
+                    <ul id="ingredients-list">
+                        <li id="measure">${meal.strIngredient1} ${meal.strMeasure1}</li>
+                        <li id="measure">${meal.strIngredient2} ${meal.strMeasure1}</li>
+                        <li id="measure">${meal.strIngredient3} ${meal.strMeasure1}</li>
+                        <li id="measure">${meal.strIngredient4} ${meal.strMeasure1}</li>
+                        <li id="measure">${meal.strIngredient5} ${meal.strMeasure1}</li>
+                        <li id="measure">${meal.strIngredient6} ${meal.strMeasure1}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    `;
+    document.getElementById('meal-ingredients').innerHTML = mealDetails;
+}
